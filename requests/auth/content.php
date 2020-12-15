@@ -1,13 +1,10 @@
 <?php
-# @*************************************************************************@
-# @ @author Mansur Altamirov (Mansur_TL)                                    @
-# @ @author_url 1: https://www.instagram.com/mansur_tl                      @
-# @ @author_url 2: http://codecanyon.net/user/mansur_tl                     @
-# @ @author_email: highexpresstore@gmail.com                                @
-# @*************************************************************************@
-# @ HighExpress - The Ultimate Modern Marketplace Platform                  @
-# @ Copyright (c) 05.07.19 HighExpress. All rights reserved.                @
-# @*************************************************************************@
+# @*****************************************************************************@
+# @	Group 4 Thương mại điện tử Cô Châu											@
+# @ @github group4: https://github.com/17130081NguyenThanhHung/Ecommerce-Group4 @
+# @ @author1_url: https://www.facebook.com/TheSaltOfTheEarthTheLightOfTheWorld/	@
+# @ @author1_email: 17130081@st.hcmuaf.edu.vn                            		@
+# @*****************************************************************************@
 
 if ($hs['is_logged']) {
 	hs_redirect('/');

@@ -1,42 +1,90 @@
+<!--C:\xampp\htdocs\Web-raovat\views\v1\html\footer-->
 <div class="content-container">
 	<div class="top-line">
-		<ul>
+		<ul style="justify-content: space-between; flex-direction: row; margin-top:20px">
 			<li>
-				<a href="{{LINK privacy_policy}}">
-					{{TR Privacy Policy}}
-				</a>
-			</li>
+				<h5 style="margin-bottom: 12px;">{{TR HỖ TRỢ KHÁCH HÀNG}}</h5>
+				<ul class="list__link" >
+					<li style="padding-top: 5px !important;" class="list__link--item">
+						<a href="{{LINK privacy_policy}}">{{TR Privacy Policy}}</a>
+					</li>
+					<li class="list__link--item">
+						<a href="{{LINK terms}}">{{TR Terms of Use}}</a>	
+					</li>
+					<li class="list__link--item">
+						<a href="{{LINK merchant_terms}}">{{TR Merchant terms}}</a>
+					</li>
+					<li class="list__link--item">
+						<a href="{{LINK help}}">F.A.Q</a>
+					</li>
+					<li  class="list__link--item">
+						<a href="{{LINK contact_us}}">{{TR Contact us}}</a>
+					</li>
+				</ul>
+			</li>		
 			<li>
-				<a href="{{LINK terms}}">
-					{{TR Terms of Use}}
-				</a>
-			</li>
-			<li>
-				<a href="{{LINK about}}">
-					{{TR About us}}
-				</a>
-			</li>
-			<li>
-				<a href="{{LINK contact_us}}">
-					{{TR Contact us}}
-				</a>
-			</li>
-			<li>
-				<a href="{{LINK merchant_terms}}">
-					{{TR Merchant terms}}
-				</a>
-			</li>
-			<li>
-				<a href="{{LINK help}}">
-					F.A.Q
-				</a>
-			</li>
+				<h5 style="margin-bottom: 12px;">{{TR VỀ E-PHONES}}</h5>
+				<ul class="list__link" style="padding: 0; flex-direction: column;">
+					
+					<li class="list__link--item">
+						<a href="{{LINK introduction}}"> {{TR Introduction}} </a>
+					</li>
+					
+					<li class="list__link--item">
+						<a href="{{LINK about}}"> {{TR About us}} </a>
+					</li>
 
-			<li class="ml-auto copyright">
-				<a href="#">
-					&copy; <?php echo date('Y'); ?> {{CONFIG name}} {{TR All rights reserved}}
-				</a>
+					<li class="list__link--item">
+						<a href="{{LINK }}"> {{TR Blog}} </a>
+					</li>
+				</ul>
 			</li>
+		
+			<li>
+				<h5 style="margin-bottom: 12px;">LIÊN KẾT</h5>
+				<ul class="list__link social" style="flex-direction: row;">
+
+					<li class="list__link--item">
+						<a target="_blank" href="https://www.facebook.com/TheSaltOfTheEarthTheLightOfTheWorld/"> <img src="/demotmdt/Web-raovat/upload/images/facebook.svg"> </a>
+					</li>
+
+					<li class="list__link--item">
+						<a target="_blank" href="https://www.youtube.com/"> <img src="/demotmdt/Web-raovat/upload/images/youtube.svg"> </a>
+					</li>
+
+					<li class="list__link--item">
+						<a target="_blank" href="https://twitter.com/home?lang=vi"> <img src="/demotmdt/Web-raovat/upload/images/twiter.png"> </a>
+					</li>
+
+				</ul>
+				<h5 style="margin-bottom: 12px;margin-top:20px">Chứng nhận</h5>
+				<ul class="list__link social" style="flex-direction: row;">
+					<li class="list__link--item">
+						<a target="_blank" href="http://online.gov.vn/"> <img src="https://static.chotot.com/storage/default/cerfiticate.png"> </a>
+					</li>
+					
+				</ul>
+			</li>
+				
 		</ul>
+		<hr>
+		<div style="
+    				padding: 10px 0;
+    				text-align: center;
+    				color: #9697a1;
+    				
+			"> 				
+				
+					Sàn giao dịch E-Phones -  Địa chỉ: Khu phố 6, Phường Linh Trung, Quận Thủ Đức, TP. Hồ Chí Minh
+				
+				<br>
+				
+					&copy; <?php echo date('Y'); ?> {{CONFIG name}} {{TR All rights reserved}}
+				
+				<br>
+				
+					Email: E-phones_support@gmail.com - Hotline : 0123456789
+				
+	</div>
 	</div>
 </div>

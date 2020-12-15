@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 26, 2020 lúc 05:45 PM
+-- Thời gian đã tạo: Th12 15, 2020 lúc 05:26 PM
 -- Phiên bản máy phục vụ: 10.4.14-MariaDB
 -- Phiên bản PHP: 7.2.34
 
@@ -87,6 +87,13 @@ CREATE TABLE `hex_announcements` (
   `time` varchar(25) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Đang đổ dữ liệu cho bảng `hex_announcements`
+--
+
+INSERT INTO `hex_announcements` (`id`, `user_id`, `message`, `title`, `url`, `type`, `static`, `message_type`, `slug`, `json_data`, `time`) VALUES
+(12, 4, 'The password of your account was just changed. Please be sure to memorize it or note it in a safe place!', 'The password has been changed!', '', 'info', 'Y', 'system', 'none', '{}', '1606444349');
+
 -- --------------------------------------------------------
 
 --
@@ -145,6 +152,14 @@ CREATE TABLE `hex_chat_conversations` (
   `time` int(20) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Đang đổ dữ liệu cho bảng `hex_chat_conversations`
+--
+
+INSERT INTO `hex_chat_conversations` (`id`, `user_one`, `user_two`, `time`) VALUES
+(3, 1, 3, 1606443725),
+(4, 3, 1, 1606443725);
+
 -- --------------------------------------------------------
 
 --
@@ -164,6 +179,15 @@ CREATE TABLE `hex_chat_messages` (
   `deleted_fs2` enum('Y','N') NOT NULL DEFAULT 'N',
   `time` varchar(25) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Đang đổ dữ liệu cho bảng `hex_chat_messages`
+--
+
+INSERT INTO `hex_chat_messages` (`id`, `sent_by`, `sent_to`, `owner`, `message`, `media_file`, `media_type`, `seen`, `deleted_fs1`, `deleted_fs2`, `time`) VALUES
+(2, 1, 3, 1, 'Hello guy', '', 'none', '1606443701', 'N', 'N', '1606443690'),
+(3, 3, 1, 3, 'Hello guy lại nha.', '', 'none', '1606443714', 'N', 'N', '1606443713'),
+(4, 1, 3, 1, 'OK', '', 'none', '1606443728', 'N', 'N', '1606443725');
 
 -- --------------------------------------------------------
 
@@ -196,7 +220,9 @@ CREATE TABLE `hex_checkout_transactions` (
 
 INSERT INTO `hex_checkout_transactions` (`id`, `order_id`, `seller_id`, `buyer_id`, `amount`, `prod_id`, `var_id`, `var_type`, `status`, `method`, `stripe_pid`, `paypal_pid`, `wallet_pid`, `cod_pid`, `market_rate`, `time`) VALUES
 (1, 1, 3, 1, '28989997', 15, 0, 'single', 'success', 'wallet', 'none', 'none', 'fd14050fc07884f5106ddb6f3da2d10a4461d8941606392469dd6574a54c91ecd400fd68386fd947b0', 'none', 5, '1606392470'),
-(2, 2, 3, 1, '5290000', 18, 0, 'single', 'success', 'wallet', 'none', 'none', '030d08ef644794c4448f2d85ecc1277d58b6a1c0160640631903d22c5afdc5add1b1375f826215eb7a', 'none', 5, '1606406320');
+(2, 2, 3, 1, '5290000', 18, 0, 'single', 'success', 'wallet', 'none', 'none', '030d08ef644794c4448f2d85ecc1277d58b6a1c0160640631903d22c5afdc5add1b1375f826215eb7a', 'none', 5, '1606406320'),
+(3, 3, 3, 1, '36900000', 22, 0, 'single', 'success', 'wallet', 'none', 'none', 'decf3d091cb18c469d1fa0084cad14be22cc6f581606441273b1bb1242f7e966086af7270fec41f374', 'none', 5, '1606441274'),
+(4, 4, 3, 4, '19990000', 21, 0, 'single', 'success', 'wallet', 'none', 'none', '6ff04f84b703725878d0a29afa8e045710388cfe160644436753d32e428d4276a5c53faf4fe937371c', 'none', 5, '1606444368');
 
 -- --------------------------------------------------------
 
@@ -244,13 +270,13 @@ INSERT INTO `hex_config` (`id`, `title`, `name`, `value`, `regex`) VALUES
 (27, 'Market keywords', 'keywords', 'marketplace,ecommerce,shopping,ebusiness,ecom,store,online store,online business,ecommerce website,shopping cart,ecommunity,ecommerce platform', ''),
 (28, 'Google Maps API', 'google_maps_api', '', ''),
 (29, 'Company address', 'company_address', 'E-Phones', ''),
-(30, 'Company contacts info', 'contacts_info', 'Khu phố 6, Phường Linh Trung, Quận Thủ Đức, TP. Hồ Chí Minh <br>Số điện thoại: 096402429', '{32,3000}'),
+(30, 'Company contacts info', 'contacts_info', 'Khu phố 6, Phường Linh Trung, Quận Thủ Đức, TP. Hồ Chí Minh    <br>Số điện thoại: 096402429', '{32,3000}'),
 (31, '', 'last_sitemap_update', '', ''),
 (32, '', 'last_backup', '', ''),
 (33, 'Google analytics', 'google_analytics', '', ''),
 (34, 'Order cancellation fee', 'order_cancellation_fee', '45', '/^[0-9]{1,11}(\\.[0-9]{1,2}){0,1}$/'),
 (35, '', 'script_version', '1.0.1', ''),
-(36, '', 'db_lc', '1606426487', ''),
+(36, '', 'db_lc', '1608067312', ''),
 (37, 'Facebook API ID', 'facebook_api_id', '', ''),
 (38, 'Facebook API Key', 'facebook_api_key', '', ''),
 (39, 'Twitter API ID', 'twitter_api_id', '', ''),
@@ -322,7 +348,9 @@ CREATE TABLE `hex_data_sessions` (
 
 INSERT INTO `hex_data_sessions` (`id`, `user_id`, `json`, `time`) VALUES
 (1, 1, '[]', '1593087193'),
-(3, 3, '[]', '1606390626');
+(3, 3, '[]', '1606390626'),
+(4, 4, '[]', '1606443809'),
+(5, 5, '[]', '1607577678');
 
 -- --------------------------------------------------------
 
@@ -350,7 +378,8 @@ CREATE TABLE `hex_deliv_addresses` (
 --
 
 INSERT INTO `hex_deliv_addresses` (`id`, `full_name`, `phone`, `street`, `off_apt`, `country_id`, `state`, `city`, `zip_postal`, `email`, `user_id`, `time`) VALUES
-(1, 'Nguyễn Thanh Hưng', '0964024229', '353 Nguyễn Trãi, Quận 1, Hồ Chí Minh', 'Nhà riêng', 233, '353 Nguyễn Trãi, Quận 1', 'Hồ Chí Minh', '700000', 'nguyenthanhhungb6@gmail.com', 1, '');
+(1, 'Nguyễn Thanh Hưng', '0964024229', '353 Nguyễn Trãi, Quận 1, Hồ Chí Minh', 'Nhà riêng', 233, '353 Nguyễn Trãi, Quận 1', 'Hồ Chí Minh', '700000', 'nguyenthanhhungb6@gmail.com', 1, ''),
+(2, 'Nguyễn Thanh Hưng1', '09640242291', '3531 Nguyễn Trãi, Quận 1, Hồ Chí Minh', 'Nhà riêng1', 233, '3531 Nguyễn Trãi, Quận 1', 'Hồ Chí Minh', '700000', 'nguyenthanhhungb61@gmail.com', 4, '');
 
 -- --------------------------------------------------------
 
@@ -2538,7 +2567,9 @@ CREATE TABLE `hex_market_revenue` (
 
 INSERT INTO `hex_market_revenue` (`id`, `order_id`, `trans_id`, `amount`, `rate`, `time`) VALUES
 (1, 1, 1, '1449499.85', '5', '1606392470'),
-(2, 2, 2, '264500.00', '5', '1606406320');
+(2, 2, 2, '264500.00', '5', '1606406320'),
+(3, 3, 3, '1845000.00', '5', '1606441274'),
+(4, 4, 4, '999500.00', '5', '1606444368');
 
 -- --------------------------------------------------------
 
@@ -2563,8 +2594,11 @@ CREATE TABLE `hex_notifications` (
 
 INSERT INTO `hex_notifications` (`id`, `notifier_id`, `recipient_id`, `subject`, `message`, `status`, `url`, `time`) VALUES
 (2, 1, 3, 'product_review', 'has reviewed your product', '1', 'https://localhost/demotmdt/Web-raovat//product/15', '1606403081'),
-(3, 1, 3, 'order', 'has placed an order for your product', '0', 'https://localhost/demotmdt/Web-raovat//product/18', '1606406319'),
-(4, 1, 3, 'product_review', 'has reviewed your product', '0', 'https://localhost/demotmdt/Web-raovat//product/18', '1606406350');
+(4, 1, 3, 'product_review', 'has reviewed your product', '1', 'https://localhost/demotmdt/Web-raovat//product/18', '1606406350'),
+(5, 1, 3, 'order', 'has placed an order for your product', '1', 'https://localhost/demotmdt/Web-raovat//product/22', '1606441273'),
+(6, 3, 1, 'order', 'has updated your order status', '1', 'https://localhost/demotmdt/Web-raovat//merchant_panel/order_invoice/3', '1606441316'),
+(7, 4, 3, 'order', 'has placed an order for your product', '1', 'https://localhost/demotmdt/Web-raovat//product/21', '1606444367'),
+(8, 1, 3, 'product_review', 'has reviewed your product', '1', 'https://localhost/demotmdt/Web-raovat//product/22', '1607570801');
 
 -- --------------------------------------------------------
 
@@ -2606,7 +2640,9 @@ CREATE TABLE `hex_orders` (
 
 INSERT INTO `hex_orders` (`id`, `seller_id`, `buyer_id`, `prod_id`, `prod_sp`, `prod_rp`, `prod_sf`, `prod_sc`, `paid_amount`, `var_id`, `var_type`, `quantity`, `cust_name`, `cust_phone`, `cust_street`, `cust_off_apt`, `cust_country`, `cust_state`, `cust_city`, `cust_zip`, `cust_email`, `status`, `timeline`, `time`, `cancellation_time`) VALUES
 (1, 3, 1, 15, '28989997', '37990000', '0.00', 'free', '28989997', 0, 'single', 1, 'Nguyễn Thanh Hưng', '0964024229', '353 Nguyễn Trãi, Quận 1, Hồ Chí Minh', 'Nhà riêng', 'Việt Nam', '353 Nguyễn Trãi, Quận 1', 'Hồ Chí Minh', '700000', 'nguyenthanhhungb6@gmail.com', 'pending', '[]', '1606392469', '0'),
-(2, 3, 1, 18, '5290000', '6290000', '0.00', 'free', '5290000', 0, 'single', 1, 'Nguyễn Thanh Hưng', '0964024229', '353 Nguyễn Trãi, Quận 1, Hồ Chí Minh', 'Nhà riêng', 'Việt Nam', '353 Nguyễn Trãi, Quận 1', 'Hồ Chí Minh', '700000', 'nguyenthanhhungb6@gmail.com', 'pending', '[]', '1606406319', '0');
+(2, 3, 1, 18, '5290000', '6290000', '0.00', 'free', '5290000', 0, 'single', 1, 'Nguyễn Thanh Hưng', '0964024229', '353 Nguyễn Trãi, Quận 1, Hồ Chí Minh', 'Nhà riêng', 'Việt Nam', '353 Nguyễn Trãi, Quận 1', 'Hồ Chí Minh', '700000', 'nguyenthanhhungb6@gmail.com', 'pending', '[]', '1606406319', '0'),
+(3, 3, 1, 22, '36900000', '37000000', '0.00', 'free', '36900000', 0, 'single', 1, 'Nguyễn Thanh Hưng', '0964024229', '353 Nguyễn Trãi, Quận 1, Hồ Chí Minh', 'Nhà riêng', 'Việt Nam', '353 Nguyễn Trãi, Quận 1', 'Hồ Chí Minh', '700000', 'nguyenthanhhungb6@gmail.com', 'shipped', '[\n    \"shipped\"\n]', '1606441273', '0'),
+(4, 3, 4, 21, '19990000', '30990000', '0.00', 'free', '19990000', 0, 'single', 1, 'Nguyễn Thanh Hưng1', '09640242291', '3531 Nguyễn Trãi, Quận 1, Hồ Chí Minh', 'Nhà riêng1', 'Việt Nam', '3531 Nguyễn Trãi, Quận 1', 'Hồ Chí Minh', '700000', 'nguyenthanhhungb61@gmail.com', 'pending', '[]', '1606444367', '0');
 
 -- --------------------------------------------------------
 
@@ -2641,6 +2677,13 @@ CREATE TABLE `hex_ord_hist_timeline` (
   `comment` varchar(600) NOT NULL,
   `time` varchar(20) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Đang đổ dữ liệu cho bảng `hex_ord_hist_timeline`
+--
+
+INSERT INTO `hex_ord_hist_timeline` (`id`, `seller_id`, `buyer_id`, `order_id`, `status`, `buyer_notified`, `comment`, `time`) VALUES
+(1, 3, 1, 3, 'shipped', 'y', '***', '1606441316');
 
 -- --------------------------------------------------------
 
@@ -2709,16 +2752,23 @@ CREATE TABLE `hex_products` (
 --
 
 INSERT INTO `hex_products` (`id`, `name`, `description`, `keywords`, `category`, `condition`, `has_variations`, `reg_price`, `sale_price`, `quantity`, `sku`, `shipping_cost`, `shipping_fee`, `shipping_time`, `status`, `last_status`, `origin`, `brand`, `model_number`, `weight`, `length`, `width`, `height`, `poster`, `thumb`, `variation_type`, `sizing_type`, `user_id`, `sold`, `rating`, `reviews`, `profit`, `activity_status`, `approved`, `editing_stage`, `payment_method`, `time`) VALUES
-(14, 'Điện thoại iPhone 11 64GB (Full box chính hãng Việt Nam)', 'Sau bao nhiêu chờ đợi cũng như đồn đoán thì cuối cùng Apple đã chính thức giới thiệu bộ 3 siêu phẩm iPhone 11 mạnh mẽ nhất của mình vào tháng 9/2019. Có mức giá rẻ nhất nhưng vẫn được nâng cấp mạnh mẽ như chiếc iPhone Xr năm ngoái, đó chính là phiên bản iPhone 11 64GB.', '', 'iphone', '1', '0', '19990000', '18990000', 10, 'IP0001', 'free', '0.00', '1_bd', 'active', 'active', 'Chính hãng Việt Nam', 'IPhone', 'IP110001', '226g', '150.9mm', '75.7mm', '8.3mm', 'upload/photos/2020/11/m5eOLjjUrE1SPgCRQbLC_26_c4d01c8e58b93f4c1117bd741ff3c215_image.jpg', 'upload/photos/thumbs/2020/11/m5eOLjjUrE1SPgCRQbLC_26_c4d01c8e58b93f4c1117bd741ff3c215_image_120x120_thumbnail.jpg', 'single', 'none', 3, 0, '0.0', 0, '0.00', 'active', 'Y', 'saved', 'all_payments', '1606391700'),
-(15, 'Điện thoại iPhone 11 Pro Max 512GB Like new 99,9%', 'Để tìm kiếm một chiếc smartphone có hiệu năng mạnh mẽ và có thể sử dụng mượt mà trong 2-3 năm tới thì không có chiếc máy nào xứng đang hơn chiếc iPhone 11 Pro Max 512GB mới ra mắt trong năm 2019 của Apple.', '', 'iphone', '2', '0', '37990000', '28989997', 6, 'IP0002', 'free', '0.00', '1_bd', 'active', 'active', 'Sách tay Mỹ', 'IPhone', 'IP11P002', '281g', '153mm', '79mm', '8.2mm', 'upload/photos/2020/11/sZFVCY4B7QHzIcOdRqtq_26_bb5912dbff2a753bf3d14893282aeba7_image.jpg', 'upload/photos/thumbs/2020/11/sZFVCY4B7QHzIcOdRqtq_26_bb5912dbff2a753bf3d14893282aeba7_image_120x120_thumbnail.jpg', 'single', 'none', 3, 1, '5.0', 0, '27540497.15', 'active', 'Y', 'saved', 'all_payments', '1606392299'),
-(16, 'Điện thoại iPhone 11 128GB (Đã qua sửa chữa, cam kết linh kiện zin)', 'Được xem là phiên bản iPhone &quot;giá rẻ&quot; trong bộ 3 iPhone mới ra mắt nhưng iPhone 11 128GB vẫn sở hữu cho mình rất nhiều ưu điểm mà hiếm có một chiếc smartphone nào khác sở hữu.', '', 'iphone', '3', '0', '21990000', '17990000', 15, 'IP0003', 'paid', '20000', '2_3_bd', 'active', 'active', 'Chính hãng Việt Nam', 'Iphone', 'IP110003', '300g', '149mm', '70.4mm', '7.8mm', 'upload/photos/2020/11/B8nYXyj8YVH2F2YRiCAe_26_553fdfd33d6959cc15b0ed47b52d5ffc_image.png', 'upload/photos/thumbs/2020/11/B8nYXyj8YVH2F2YRiCAe_26_553fdfd33d6959cc15b0ed47b52d5ffc_image_120x120_thumbnail.png', 'single', 'none', 3, 0, '0.0', 0, '0.00', 'active', 'Y', 'saved', 'all_payments', '1606403358'),
-(17, 'Điện thoại iPhone 11 Pro 256GB Like new 98% ( Máy như mới)', 'iPhone 11 Pro 256GB có lẽ sẽ là chiếc iPhone được nhiều người dùng lựa chọn khi nó sở hữu mức giá tốt hơn chiếc iPhone 11 Pro Max nhưng vẫn sở hữu tất cả những ưu điểm trên người anh em của mình.', '', 'iphone', '2', '0', '30990000', '26990000', 5, 'IP0004', 'free', '0.00', '1_bd', 'active', 'active', 'Sách tay Mỹ', 'Iphone', 'IP110004', '300g', '149mm', '70.4mm', '7.8mm', 'upload/photos/2020/11/xLxsuG3Hyj6UelWTjixt_26_5ce6e628ce427783160bf57e511bf18a_image.png', 'upload/photos/thumbs/2020/11/xLxsuG3Hyj6UelWTjixt_26_5ce6e628ce427783160bf57e511bf18a_image_120x120_thumbnail.png', 'single', 'none', 3, 0, '0.0', 0, '0.00', 'active', 'Y', 'saved', 'all_payments', '1606403819'),
-(18, 'Điện thoại Samsung Galaxy A30s Like new (Đẹp như mới)', 'Samsung Galaxy A30s, chiếc smartphone mới ra mắt sở hữu nhiều ưu điểm nổi bật trong phân khúc điện thoại tầm trung, nổi bật nhất phải kể đến là dung lượng pin lên tới 4000 mAh,bộ 3 camera cùng vi xử lý đủ mạnh, ổn định.', '', 'samsung', '2', '0', '6290000', '5290000', 4, 'SS001', 'free', '0.00', '1_bd', 'active', 'active', 'Chính hãng Việt Nam', 'SamSung', 'SSA30s', '300g', '149mm', '70.4mm', '7.8mm', 'upload/photos/2020/11/gfXKYb9lVFRDbNL78TE1_26_526925a3d3ab86acff9527dfe8620022_image.png', 'upload/photos/thumbs/2020/11/gfXKYb9lVFRDbNL78TE1_26_526925a3d3ab86acff9527dfe8620022_image_120x120_thumbnail.png', 'single', 'none', 3, 1, '5.0', 0, '5025500', 'active', 'Y', 'saved', 'all_payments', '1606404169'),
-(19, 'Điện thoại Samsung Galaxy A30s Like new 97% (Máy cấn xước nhẹ)', 'Samsung Galaxy A30s, chiếc smartphone mới ra mắt sở hữu nhiều ưu điểm nổi bật trong phân khúc điện thoại tầm trung, nổi bật nhất phải kể đến là dung lượng pin lên tới 4000 mAh,bộ 3 camera cùng vi xử lý đủ mạnh, ổn định.', '', 'samsung', '2', '0', '6290000', '4390000', 2, 'SS002', 'free', '0.00', '1_bd', 'active', 'active', 'Chính hãng Việt Nam', 'SamSung', 'SSA30s', '300g', '149mm', '70.4mm', '7.8mm', 'upload/photos/2020/11/b2UF8urCpAVR88v2R574_26_9b7b92fc74c0896304f7c0fae5dd9e74_image.png', 'upload/photos/thumbs/2020/11/b2UF8urCpAVR88v2R574_26_9b7b92fc74c0896304f7c0fae5dd9e74_image_120x120_thumbnail.png', 'single', 'none', 3, 0, '0.0', 0, '0.00', 'active', 'Y', 'saved', 'all_payments', '1606404314'),
-(20, 'Điện thoại Samsung Galaxy A30s Like new 97% (Máy ngoại hình còn đẹp)', 'Samsung Galaxy A30s, chiếc smartphone mới ra mắt sở hữu nhiều ưu điểm nổi bật trong phân khúc điện thoại tầm trung, nổi bật nhất phải kể đến là dung lượng pin lên tới 4000 mAh,bộ 3 camera cùng vi xử lý đủ mạnh, ổn định.', '', 'samsung', '3', '0', '5290000', '4190000', 2, 'SS003', 'free', '0.00', '1_bd', 'active', 'active', 'Sách tay Campuchia', 'SamSung', 'SSA30s', '300g', '149mm', '70.4mm', '7.8mm', 'upload/photos/2020/11/OI3h4hijQlXqHeCEJMaw_26_aba98dfb4cdbd96b68b8b88e56019263_image.png', 'upload/photos/thumbs/2020/11/OI3h4hijQlXqHeCEJMaw_26_aba98dfb4cdbd96b68b8b88e56019263_image_120x120_thumbnail.png', 'single', 'none', 3, 0, '0.0', 0, '0.00', 'active', 'Y', 'saved', 'all_payments', '1606404493'),
-(21, 'Điện thoại iPhone 11 Pro 256GB Like new 97% ( Máy như mới)', 'iPhone 11 Pro 256GB có lẽ sẽ là chiếc iPhone được nhiều người dùng lựa chọn khi nó sở hữu mức giá tốt hơn chiếc iPhone 11 Pro Max nhưng vẫn sở hữu tất cả những ưu điểm trên người anh em của mình.', '', 'iphone', '2', '0', '30990000', '19990000', 20, 'IP0005', 'free', '0.00', '1_bd', 'active', 'active', 'Sách tay Hàn Quốc', 'Iphone', 'IP0005', '300g', '149mm', '70.4mm', '7.8mm', 'upload/photos/2020/11/hqVuA68Cnrg6p94T4S1e_26_6086804950ce846321dffe9d2ef45a41_image.png', 'upload/photos/thumbs/2020/11/hqVuA68Cnrg6p94T4S1e_26_6086804950ce846321dffe9d2ef45a41_image_120x120_thumbnail.png', 'single', 'none', 3, 0, '0.0', 0, '0.00', 'active', 'Y', 'saved', 'all_payments', '1606405234'),
-(22, 'Điện thoại iPhone 11 Pro 512GB ( Sách tay Mỹ)', 'iPhone 11 Pro 256GB có lẽ sẽ là chiếc iPhone được nhiều người dùng lựa chọn khi nó sở hữu mức giá tốt hơn chiếc iPhone 11 Pro Max nhưng vẫn sở hữu tất cả những ưu điểm trên người anh em của mình.', '', 'iphone', '2', '0', '37000000', '36900000', 10, 'IP0006', 'free', '0.00', '1_bd', 'active', 'active', 'Sách tay Hàn Quốc', 'Iphone', 'IP0006', '300g', '149mm', '70.4mm', '7.8mm', 'upload/photos/2020/11/FGTsjhqsbAVr9RR3PWsV_26_a2ac108776c0daecb532d6d94a32301b_image.png', 'upload/photos/thumbs/2020/11/FGTsjhqsbAVr9RR3PWsV_26_a2ac108776c0daecb532d6d94a32301b_image_120x120_thumbnail.png', 'single', 'none', 3, 0, '0.0', 0, '0.00', 'active', 'Y', 'saved', 'all_payments', '1606405379'),
-(23, '', NULL, '', 'none', '1', '0', '0.00', '0.00', 0, '', '', '0.00', '', 'active', 'active', '', '', '', '0', '0', '0', '0', 'upload/photos/2020/11/l6PjHHDuwnBBrjhL8aif_26_d80e50f01d83776d870b8394df0bb4a2_image.png', 'upload/photos/thumbs/2020/11/l6PjHHDuwnBBrjhL8aif_26_d80e50f01d83776d870b8394df0bb4a2_image_120x120_thumbnail.png', 'single', 'none', 3, 0, '0.0', 0, '0.00', 'orphan', 'N', 'unsaved', 'pre_payments', '1606407301');
+(14, 'Điện thoại iPhone 11 64GB (Full box chính hãng Việt Nam)', 'Sau bao nhiêu chờ đợi cũng như đồn đoán thì cuối cùng Apple đã chính thức giới thiệu bộ 3 siêu phẩm iPhone 11 mạnh mẽ nhất của mình vào tháng 9/2019. Có mức giá rẻ nhất nhưng vẫn được nâng cấp mạnh mẽ như chiếc iPhone Xr năm ngoái, đó chính là phiên bản iPhone 11 64GB.', '', 'iphone', '1', '0', '6290000', '4190000', 10, 'IP0001', 'free', '0.00', '1_bd', 'active', 'active', 'Chính hãng Việt Nam', 'IPhone', 'IP110001', '226g', '150.9mm', '75.7mm', '8.3mm', 'upload/photos/2020/11/m5eOLjjUrE1SPgCRQbLC_26_c4d01c8e58b93f4c1117bd741ff3c215_image.jpg', 'upload/photos/thumbs/2020/11/m5eOLjjUrE1SPgCRQbLC_26_c4d01c8e58b93f4c1117bd741ff3c215_image_120x120_thumbnail.jpg', 'single', 'none', 3, 0, '0.0', 0, '0.00', 'active', 'Y', 'unsaved', 'all_payments', '1607528431'),
+(15, 'Điện thoại iPhone 11 Pro Max 512GB Like new 99,9%', '* Máy xách tay chính hãng, mới 99% còn bảo hành dài hạn, cma kết nguyên zin Apple.  <br>* Shop có nhiều hàng với đầy đủ màu sắc và dung lương, cam kết giá luôn rẻ hơn so với thị trường, có trả góp 0%.', '', 'iphone', '2', '0', '6290000', '4190000', 6, 'IP0002', 'free', '0.00', '1_bd', 'active', 'active', 'Sách tay Mỹ', 'IPhone', 'IP11P002', '281g', '153mm', '79mm', '8.2mm', 'upload/photos/2020/11/sZFVCY4B7QHzIcOdRqtq_26_bb5912dbff2a753bf3d14893282aeba7_image.jpg', 'upload/photos/thumbs/2020/11/sZFVCY4B7QHzIcOdRqtq_26_bb5912dbff2a753bf3d14893282aeba7_image_120x120_thumbnail.jpg', 'single', 'none', 3, 1, '0.0', 0, '27540497.15', 'active', 'Y', 'saved', 'all_payments', '1607570451'),
+(16, 'Điện thoại iPhone 11 128GB (Đã qua sửa chữa, cam kết linh kiện zin)', 'Được xem là phiên bản iPhone &quot;giá rẻ&quot; trong bộ 3 iPhone mới ra mắt nhưng iPhone 11 128GB vẫn sở hữu cho mình rất nhiều ưu điểm mà hiếm có một chiếc smartphone nào khác sở hữu.', '', 'iphone', '3', '0', '6290000', '4190000', 15, 'IP0003', 'paid', '20000', '2_3_bd', 'active', 'active', 'Chính hãng Việt Nam', 'Iphone', 'IP110003', '300g', '149mm', '70.4mm', '7.8mm', 'upload/photos/2020/11/B8nYXyj8YVH2F2YRiCAe_26_553fdfd33d6959cc15b0ed47b52d5ffc_image.png', 'upload/photos/thumbs/2020/11/B8nYXyj8YVH2F2YRiCAe_26_553fdfd33d6959cc15b0ed47b52d5ffc_image_120x120_thumbnail.png', 'single', 'none', 3, 0, '0.0', 0, '0.00', 'active', 'Y', 'saved', 'all_payments', '1606403358'),
+(17, 'Điện thoại iPhone 11 Pro 256GB Like new 98% ( Máy như mới)', 'iPhone 11 Pro 256GB có lẽ sẽ là chiếc iPhone được nhiều người dùng lựa chọn khi nó sở hữu mức giá tốt hơn chiếc iPhone 11 Pro Max nhưng vẫn sở hữu tất cả những ưu điểm trên người anh em của mình.', '', 'iphone', '2', '0', '6290000', '4190000', 5, 'IP0004', 'free', '0.00', '1_bd', 'active', 'active', 'Sách tay Mỹ', 'Iphone', 'IP110004', '300g', '149mm', '70.4mm', '7.8mm', 'upload/photos/2020/11/xLxsuG3Hyj6UelWTjixt_26_5ce6e628ce427783160bf57e511bf18a_image.png', 'upload/photos/thumbs/2020/11/xLxsuG3Hyj6UelWTjixt_26_5ce6e628ce427783160bf57e511bf18a_image_120x120_thumbnail.png', 'single', 'none', 3, 0, '0.0', 0, '0.00', 'active', 'Y', 'saved', 'all_payments', '1606403819'),
+(18, 'Điện thoại Samsung Galaxy A30s Like new (Đẹp như mới)', 'Samsung Galaxy A30s, chiếc smartphone mới ra mắt sở hữu nhiều ưu điểm nổi bật trong phân khúc điện thoại tầm trung, nổi bật nhất phải kể đến là dung lượng pin lên tới 4000 mAh,bộ 3 camera cùng vi xử lý đủ mạnh, ổn định.', '', 'samsung', '2', '0', '6290000', '4190000', 4, 'SS001', 'free', '0.00', '1_bd', 'active', 'active', 'Chính hãng Việt Nam', 'SamSung', 'SSA30s', '300g', '149mm', '70.4mm', '7.8mm', 'upload/photos/2020/11/gfXKYb9lVFRDbNL78TE1_26_526925a3d3ab86acff9527dfe8620022_image.png', 'upload/photos/thumbs/2020/11/gfXKYb9lVFRDbNL78TE1_26_526925a3d3ab86acff9527dfe8620022_image_120x120_thumbnail.png', 'single', 'none', 3, 1, '0.0', 0, '5025500', 'active', 'Y', 'saved', 'all_payments', '1606404169'),
+(19, 'Điện thoại Samsung Galaxy A30s Like new 97% (Máy cấn xước nhẹ)', 'Samsung Galaxy A30s, chiếc smartphone mới ra mắt sở hữu nhiều ưu điểm nổi bật trong phân khúc điện thoại tầm trung, nổi bật nhất phải kể đến là dung lượng pin lên tới 4000 mAh,bộ 3 camera cùng vi xử lý đủ mạnh, ổn định.', '', 'samsung', '2', '0', '6290000', '4190000', 2, 'SS002', 'free', '0.00', '1_bd', 'active', 'active', 'Chính hãng Việt Nam', 'SamSung', 'SSA30s', '300g', '149mm', '70.4mm', '7.8mm', 'upload/photos/2020/11/b2UF8urCpAVR88v2R574_26_9b7b92fc74c0896304f7c0fae5dd9e74_image.png', 'upload/photos/thumbs/2020/11/b2UF8urCpAVR88v2R574_26_9b7b92fc74c0896304f7c0fae5dd9e74_image_120x120_thumbnail.png', 'single', 'none', 3, 0, '0.0', 0, '0.00', 'active', 'Y', 'saved', 'all_payments', '1606404314'),
+(20, 'Điện thoại Samsung Galaxy A30s Like new 97% (Máy ngoại hình còn đẹp)', 'Samsung Galaxy A30s, chiếc smartphone mới ra mắt sở hữu nhiều ưu điểm nổi bật trong phân khúc điện thoại tầm trung, nổi bật nhất phải kể đến là dung lượng pin lên tới 4000 mAh,bộ 3 camera cùng vi xử lý đủ mạnh, ổn định.', '', 'samsung', '3', '0', '6290000', '4190000', 2, 'SS003', 'free', '0.00', '1_bd', 'active', 'active', 'Sách tay Campuchia', 'SamSung', 'SSA30s', '300g', '149mm', '70.4mm', '7.8mm', 'upload/photos/2020/11/OI3h4hijQlXqHeCEJMaw_26_aba98dfb4cdbd96b68b8b88e56019263_image.png', 'upload/photos/thumbs/2020/11/OI3h4hijQlXqHeCEJMaw_26_aba98dfb4cdbd96b68b8b88e56019263_image_120x120_thumbnail.png', 'single', 'none', 3, 0, '0.0', 0, '0.00', 'active', 'Y', 'saved', 'all_payments', '1606404493'),
+(21, 'Điện thoại iPhone 11 Pro 256GB Like new 97% ( Máy như mới)', 'iPhone 11 Pro 256GB có lẽ sẽ là chiếc iPhone được nhiều người dùng lựa chọn khi nó sở hữu mức giá tốt hơn chiếc iPhone 11 Pro Max nhưng vẫn sở hữu tất cả những ưu điểm trên người anh em của mình.', '', 'iphone', '2', '0', '6290000', '4190000', 19, 'IP0005', 'free', '0.00', '1_bd', 'active', 'active', 'Sách tay Hàn Quốc', 'Iphone', 'IP0005', '300g', '149mm', '70.4mm', '7.8mm', 'upload/photos/2020/11/hqVuA68Cnrg6p94T4S1e_26_6086804950ce846321dffe9d2ef45a41_image.png', 'upload/photos/thumbs/2020/11/hqVuA68Cnrg6p94T4S1e_26_6086804950ce846321dffe9d2ef45a41_image_120x120_thumbnail.png', 'single', 'none', 3, 1, '0.0', 0, '18990500', 'active', 'Y', 'saved', 'all_payments', '1606405234'),
+(22, 'Điện thoại iPhone 11 Pro 512GB ( Sách tay Mỹ)', 'iPhone 11 Pro 256GB có lẽ sẽ là chiếc iPhone được nhiều người dùng lựa chọn khi nó sở hữu mức giá tốt hơn chiếc iPhone 11 Pro Max nhưng vẫn sở hữu tất cả những ưu điểm trên người anh em của mình.', '', 'iphone', '2', '0', '6290000', '4190000', 9, 'IP0006', 'free', '0.00', '1_bd', 'active', 'active', 'Sách tay Hàn Quốc', 'Iphone', 'IP0006', '300g', '149mm', '70.4mm', '7.8mm', 'upload/photos/2020/11/FGTsjhqsbAVr9RR3PWsV_26_a2ac108776c0daecb532d6d94a32301b_image.png', 'upload/photos/thumbs/2020/11/FGTsjhqsbAVr9RR3PWsV_26_a2ac108776c0daecb532d6d94a32301b_image_120x120_thumbnail.png', 'single', 'none', 3, 1, '0.0', 0, '35055000', 'active', 'Y', 'saved', 'all_payments', '1606405379'),
+(23, 'Điện thoại iPhone 11 64GB (Full box chính hãng Việt Nam)', 'Sau bao nhiêu chờ đợi cũng như đồn đoán thì cuối cùng Apple đã chính thức giới thiệu bộ 3 siêu phẩm iPhone 11 mạnh mẽ nhất của mình vào tháng 9/2019. Có mức giá rẻ nhất nhưng vẫn được nâng cấp mạnh mẽ như chiếc iPhone Xr năm ngoái, đó chính là phiên bản iPhone 11 64GB.', '', 'iphone', '1', '0', '6290000', '4190000', 10, 'IP0007', 'free', '0.00', '1_bd', 'active', 'active', 'Chính hãng Việt Nam', 'IPhone', 'IP110007', '226g', '150.9mm', '75.7mm', '8.3mm', 'upload/photos/2020/11/m5eOLjjUrE1SPgCRQbLC_26_c4d01c8e58b93f4c1117bd741ff3c215_image.jpg', 'upload/photos/thumbs/2020/11/m5eOLjjUrE1SPgCRQbLC_26_c4d01c8e58b93f4c1117bd741ff3c215_image_120x120_thumbnail.jpg', 'single', 'none', 3, 0, '0.0', 0, '0.00', 'active', 'Y', 'unsaved', 'all_payments', '1607528431'),
+(24, 'Điện thoại iPhone 11 64GB (Full box chính hãng Việt Nam)', 'Sau bao nhiêu chờ đợi cũng như đồn đoán thì cuối cùng Apple đã chính thức giới thiệu bộ 3 siêu phẩm iPhone 11 mạnh mẽ nhất của mình vào tháng 9/2019. Có mức giá rẻ nhất nhưng vẫn được nâng cấp mạnh mẽ như chiếc iPhone Xr năm ngoái, đó chính là phiên bản iPhone 11 64GB.', '', 'iphone', '1', '0', '6290000', '4190000', 10, 'IP0001', 'free', '0.00', '1_bd', 'active', 'active', 'Chính hãng Việt Nam', 'IPhone', 'IP110001', '226g', '150.9mm', '75.7mm', '8.3mm', 'upload/photos/2020/11/m5eOLjjUrE1SPgCRQbLC_26_c4d01c8e58b93f4c1117bd741ff3c215_image.jpg', 'upload/photos/thumbs/2020/11/m5eOLjjUrE1SPgCRQbLC_26_c4d01c8e58b93f4c1117bd741ff3c215_image_120x120_thumbnail.jpg', 'single', 'none', 3, 0, '0.0', 0, '0.00', 'active', 'Y', 'unsaved', 'all_payments', '1607528431'),
+(25, 'Điện thoại iPhone 11 Pro Max 512GB Like new 99,9%', '* Máy xách tay chính hãng, mới 99% còn bảo hành dài hạn, cma kết nguyên zin Apple.  <br>* Shop có nhiều hàng với đầy đủ màu sắc và dung lương, cam kết giá luôn rẻ hơn so với thị trường, có trả góp 0%.', '', 'iphone', '2', '0', '6290000', '4190000', 6, 'IP0002', 'free', '0.00', '1_bd', 'active', 'active', 'Sách tay Mỹ', 'IPhone', 'IP11P002', '281g', '153mm', '79mm', '8.2mm', 'upload/photos/2020/11/sZFVCY4B7QHzIcOdRqtq_26_bb5912dbff2a753bf3d14893282aeba7_image.jpg', 'upload/photos/thumbs/2020/11/sZFVCY4B7QHzIcOdRqtq_26_bb5912dbff2a753bf3d14893282aeba7_image_120x120_thumbnail.jpg', 'single', 'none', 3, 1, '0.0', 0, '27540497.15', 'active', 'Y', 'saved', 'all_payments', '1607570451'),
+(29, 'Điện thoại iPhone 11 Pro Max 512GB Like new 99,9%', '* Máy xách tay chính hãng, mới 99% còn bảo hành dài hạn, cma kết nguyên zin Apple.  <br>* Shop có nhiều hàng với đầy đủ màu sắc và dung lương, cam kết giá luôn rẻ hơn so với thị trường, có trả góp 0%.', '', 'iphone', '2', '0', '6290000', '4190000', 6, 'IP0002', 'free', '0.00', '1_bd', 'active', 'active', 'Sách tay Mỹ', 'IPhone', 'IP11P002', '281g', '153mm', '79mm', '8.2mm', 'upload/photos/2020/11/sZFVCY4B7QHzIcOdRqtq_26_bb5912dbff2a753bf3d14893282aeba7_image.jpg', 'upload/photos/thumbs/2020/11/sZFVCY4B7QHzIcOdRqtq_26_bb5912dbff2a753bf3d14893282aeba7_image_120x120_thumbnail.jpg', 'single', 'none', 3, 1, '0.0', 0, '27540497.15', 'active', 'Y', 'saved', 'all_payments', '1607570451'),
+(30, 'Điện thoại Samsung Galaxy A30s Like new (Đẹp như mới)', 'Samsung Galaxy A30s, chiếc smartphone mới ra mắt sở hữu nhiều ưu điểm nổi bật trong phân khúc điện thoại tầm trung, nổi bật nhất phải kể đến là dung lượng pin lên tới 4000 mAh,bộ 3 camera cùng vi xử lý đủ mạnh, ổn định.', '', 'samsung', '2', '0', '6290000', '4190000', 4, 'SS001', 'free', '0.00', '1_bd', 'active', 'active', 'Chính hãng Việt Nam', 'SamSung', 'SSA30s', '300g', '149mm', '70.4mm', '7.8mm', 'upload/photos/2020/11/gfXKYb9lVFRDbNL78TE1_26_526925a3d3ab86acff9527dfe8620022_image.png', 'upload/photos/thumbs/2020/11/gfXKYb9lVFRDbNL78TE1_26_526925a3d3ab86acff9527dfe8620022_image_120x120_thumbnail.png', 'single', 'none', 3, 1, '0.0', 0, '5025500', 'active', 'Y', 'saved', 'all_payments', '1606404169'),
+(31, 'Điện thoại iPhone 11 Pro Max 512GB Like new 99,9%', '* Máy xách tay chính hãng, mới 99% còn bảo hành dài hạn, cma kết nguyên zin Apple.  <br>* Shop có nhiều hàng với đầy đủ màu sắc và dung lương, cam kết giá luôn rẻ hơn so với thị trường, có trả góp 0%.', '', 'iphone', '2', '0', '6290000', '4190000', 6, 'IP0002', 'free', '0.00', '1_bd', 'active', 'active', 'Sách tay Mỹ', 'IPhone', 'IP11P002', '281g', '153mm', '79mm', '8.2mm', 'upload/photos/2020/11/sZFVCY4B7QHzIcOdRqtq_26_bb5912dbff2a753bf3d14893282aeba7_image.jpg', 'upload/photos/thumbs/2020/11/sZFVCY4B7QHzIcOdRqtq_26_bb5912dbff2a753bf3d14893282aeba7_image_120x120_thumbnail.jpg', 'single', 'none', 3, 1, '0.0', 0, '27540497.15', 'active', 'Y', 'saved', 'all_payments', '1607570451'),
+(32, 'Điện thoại iPhone 11 Pro 256GB Like new 97% ( Máy như mới)', 'iPhone 11 Pro 256GB có lẽ sẽ là chiếc iPhone được nhiều người dùng lựa chọn khi nó sở hữu mức giá tốt hơn chiếc iPhone 11 Pro Max nhưng vẫn sở hữu tất cả những ưu điểm trên người anh em của mình.', '', 'iphone', '2', '0', '6290000', '4190000', 19, 'IP0005', 'free', '0.00', '1_bd', 'active', 'active', 'Sách tay Hàn Quốc', 'Iphone', 'IP0005', '300g', '149mm', '70.4mm', '7.8mm', 'upload/photos/2020/11/hqVuA68Cnrg6p94T4S1e_26_6086804950ce846321dffe9d2ef45a41_image.png', 'upload/photos/thumbs/2020/11/hqVuA68Cnrg6p94T4S1e_26_6086804950ce846321dffe9d2ef45a41_image_120x120_thumbnail.png', 'single', 'none', 3, 1, '0.0', 0, '18990500', 'active', 'Y', 'saved', 'all_payments', '1606405234'),
+(33, 'Điện thoại Samsung Galaxy A30s Like new 97% (Máy ngoại hình còn đẹp)', 'Samsung Galaxy A30s, chiếc smartphone mới ra mắt sở hữu nhiều ưu điểm nổi bật trong phân khúc điện thoại tầm trung, nổi bật nhất phải kể đến là dung lượng pin lên tới 4000 mAh,bộ 3 camera cùng vi xử lý đủ mạnh, ổn định.', '', 'samsung', '3', '0', '6290000', '4190000', 2, 'SS003', 'free', '0.00', '1_bd', 'active', 'active', 'Sách tay Campuchia', 'SamSung', 'SSA30s', '300g', '149mm', '70.4mm', '7.8mm', 'upload/photos/2020/11/OI3h4hijQlXqHeCEJMaw_26_aba98dfb4cdbd96b68b8b88e56019263_image.png', 'upload/photos/thumbs/2020/11/OI3h4hijQlXqHeCEJMaw_26_aba98dfb4cdbd96b68b8b88e56019263_image_120x120_thumbnail.png', 'single', 'none', 3, 0, '0.0', 0, '0.00', 'active', 'Y', 'saved', 'all_payments', '1606404493');
 
 -- --------------------------------------------------------
 
@@ -2744,7 +2794,6 @@ INSERT INTO `hex_product_media` (`id`, `prod_id`, `src`, `thumb`) VALUES
 (7, 14, 'upload/photos/2020/11/Tv2kHd2tBgdTPWwa5y4y_26_3f68d70ad7c9e6a6d3710e2c1b8781c3_image.jpg', 'upload/photos/thumbs/2020/11/Tv2kHd2tBgdTPWwa5y4y_26_3f68d70ad7c9e6a6d3710e2c1b8781c3_image_120x120_thumbnail.jpg'),
 (8, 14, 'upload/photos/2020/11/wBZsKg9NyIv3p6Rd9tO1_26_19cf7dd66192b13c2d58b4e24607c41a_image.jpg', 'upload/photos/thumbs/2020/11/wBZsKg9NyIv3p6Rd9tO1_26_19cf7dd66192b13c2d58b4e24607c41a_image_120x120_thumbnail.jpg'),
 (9, 14, 'upload/photos/2020/11/64A7XyQcggUX4kc62X2H_26_93db112d02adf808915fab78ccd3c5dc_image.jpg', 'upload/photos/thumbs/2020/11/64A7XyQcggUX4kc62X2H_26_93db112d02adf808915fab78ccd3c5dc_image_120x120_thumbnail.jpg'),
-(10, 14, 'upload/photos/2020/11/7PAFlF6IcI7MbbWhQKGU_26_ccecd99fc6505b29ced23c341af22c29_image.jpg', 'upload/photos/thumbs/2020/11/7PAFlF6IcI7MbbWhQKGU_26_ccecd99fc6505b29ced23c341af22c29_image_120x120_thumbnail.jpg'),
 (11, 15, 'upload/photos/2020/11/QZQhBFrMGf28aOzHblUp_26_febea851264886433445cd2fca37a569_image.jpg', 'upload/photos/thumbs/2020/11/QZQhBFrMGf28aOzHblUp_26_febea851264886433445cd2fca37a569_image_120x120_thumbnail.jpg'),
 (12, 15, 'upload/photos/2020/11/EQRa7d5NQs9hSciFnGlb_26_c6380f432b9df03691997987472ef918_image.jpg', 'upload/photos/thumbs/2020/11/EQRa7d5NQs9hSciFnGlb_26_c6380f432b9df03691997987472ef918_image_120x120_thumbnail.jpg'),
 (13, 15, 'upload/photos/2020/11/5BUmf5li3I3SiSJClvI7_26_51cd7da2be0d7097b26976a41353477f_image.jpg', 'upload/photos/thumbs/2020/11/5BUmf5li3I3SiSJClvI7_26_51cd7da2be0d7097b26976a41353477f_image_120x120_thumbnail.jpg'),
@@ -2799,8 +2848,7 @@ INSERT INTO `hex_product_media` (`id`, `prod_id`, `src`, `thumb`) VALUES
 (64, 22, 'upload/photos/2020/11/wxzVL5CaKphJ5sRQCvVp_26_aad6c1ffa1296aca4c9b7a164bb2687b_image.jpg', 'upload/photos/thumbs/2020/11/wxzVL5CaKphJ5sRQCvVp_26_aad6c1ffa1296aca4c9b7a164bb2687b_image_120x120_thumbnail.jpg'),
 (65, 22, 'upload/photos/2020/11/6dQydWhqSG24zduwtjWW_26_79ab6458083d8f256f95235e85b45670_image.jpg', 'upload/photos/thumbs/2020/11/6dQydWhqSG24zduwtjWW_26_79ab6458083d8f256f95235e85b45670_image_120x120_thumbnail.jpg'),
 (66, 22, 'upload/photos/2020/11/sPSqtBqaooSKKoDy4mba_26_28b431e998230d1f719a21d681b99b14_image.jpg', 'upload/photos/thumbs/2020/11/sPSqtBqaooSKKoDy4mba_26_28b431e998230d1f719a21d681b99b14_image_120x120_thumbnail.jpg'),
-(67, 22, 'upload/photos/2020/11/5n8iyC5ScDJ3UqWVsytv_26_57d9581ecbd70da01298214bfed02806_image.jpg', 'upload/photos/thumbs/2020/11/5n8iyC5ScDJ3UqWVsytv_26_57d9581ecbd70da01298214bfed02806_image_120x120_thumbnail.jpg'),
-(68, 23, 'upload/photos/2020/11/i7DR73zEVvPZUkHa7jd3_26_9d4ad23108840853e8f37918507bf221_image.jpg', 'upload/photos/thumbs/2020/11/i7DR73zEVvPZUkHa7jd3_26_9d4ad23108840853e8f37918507bf221_image_120x120_thumbnail.jpg');
+(67, 22, 'upload/photos/2020/11/5n8iyC5ScDJ3UqWVsytv_26_57d9581ecbd70da01298214bfed02806_image.jpg', 'upload/photos/thumbs/2020/11/5n8iyC5ScDJ3UqWVsytv_26_57d9581ecbd70da01298214bfed02806_image_120x120_thumbnail.jpg');
 
 -- --------------------------------------------------------
 
@@ -2848,14 +2896,6 @@ CREATE TABLE `hex_prod_ratings` (
   `activity_status` enum('active','inactive','orphan') NOT NULL DEFAULT 'inactive',
   `time` varchar(20) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Đang đổ dữ liệu cho bảng `hex_prod_ratings`
---
-
-INSERT INTO `hex_prod_ratings` (`id`, `user_id`, `prod_id`, `valuation`, `review`, `activity_status`, `time`) VALUES
-(1, 1, 15, 5, 'Sản phẩm chất lượng tốt đúng mô tả. Nhân viên tư vấn nhiệt tình. Sau này có cơ hội nhất định sẽ ủng hộ shop.', 'active', '1606403081'),
-(2, 1, 18, 5, 'Sản phẩm rất tốt.', 'active', '1606406350');
 
 -- --------------------------------------------------------
 
@@ -2937,8 +2977,8 @@ CREATE TABLE `hex_sessions` (
 --
 
 INSERT INTO `hex_sessions` (`id`, `session_id`, `user_id`, `platform`, `time`) VALUES
-(3, '2761cfdc9961ab1223f698ef6a5990b79150b6f416063905139c21241a2ff5d0a84b5f33c172fdf445', 1, 'web', '1606390513'),
-(4, 'df323c68c32787d68022d5bb6278d7794dca2b9f1606390625a3c813be8f3189557f0e0ab6e16ef0cd', 3, 'web', '1606390625');
+(10, '94126a419687fddda7a762134219b4ee70c07cbb1607575906f85e1a3d5e474fc13ff74176e1577a28', 1, 'web', '1607575906'),
+(12, 'f5e722194e94f8b2e8291cba111e5fc0ad7c021b16075776761831675efa1ad78be9c456bea03b0864', 5, 'web', '1607577676');
 
 -- --------------------------------------------------------
 
@@ -2994,7 +3034,8 @@ CREATE TABLE `hex_store_customers` (
 --
 
 INSERT INTO `hex_store_customers` (`id`, `seller_id`, `buyer_id`, `time`) VALUES
-(1, 3, 1, '1606392470');
+(1, 3, 1, '1606392470'),
+(2, 3, 4, '1606444367');
 
 -- --------------------------------------------------------
 
@@ -3070,8 +3111,10 @@ CREATE TABLE `hex_users` (
 --
 
 INSERT INTO `hex_users` (`id`, `username`, `fname`, `lname`, `bio`, `email`, `em_code`, `password`, `joined`, `last_active`, `ipv4_address`, `language`, `avatar`, `country_id`, `youtube`, `facebook`, `twitter`, `instagram`, `website`, `google_plus`, `verified`, `admin`, `is_seller`, `wallet`, `sales`, `active`, `phone`, `whatsapp`, `state`, `city`, `street`, `off_apt`, `zip_postal`, `deliv_addr`) VALUES
-(1, 'administrator@1', 'Administrator', '', '', 'admin@gmail.com', '', '$2y$10$8ta5gnLZA9JXHb4.WVjqHOXuQGxnCDrnclgq6tQ9JzR9BxIug3052', '1593087179', '1606407523', '::1', 'vietnamese', 'upload/users/user-avatar.png', 1, '', '', '', '', '', '', '1', '1', 'Y', '999965720003', 0, '1', '', '', '', '', '', '', '', '1'),
-(3, 'hung_nguyen@3', 'Hung', 'Nguyen', '', 'nguyenthanhhungb6@gmail.com', '1154cfbdcce5f2892f12f7b958bc51346563485a', '$2y$10$LpN7Wn7q7cADYMcqKH/IQOrTUeIBNHLcWUFGOfnXVmbumjp/3TX6W', '1606390625', '1606407562', '::1', 'vietnamese', 'upload/users/user-avatar.png', 0, '', '', '', '', '', '', '0', '0', 'Y', '1032565997.15', 2, '1', '', '', '', '', '', '', '', 'default');
+(1, 'administrator@1', 'Administrator', '', '', 'admin@gmail.com', '', '$2y$10$8ta5gnLZA9JXHb4.WVjqHOXuQGxnCDrnclgq6tQ9JzR9BxIug3052', '1593087179', '1607577730', '::1', 'vietnamese', 'upload/users/user-avatar.png', 1, '', '', '', '', '', '', '1', '1', 'Y', '999928820003', 0, '1', '', '', '', '', '', '', '', '1'),
+(3, 'hung_nguyen@3', 'Hung', 'Nguyen', 'HungSmartPhone', 'nguyenthanhhungb6@gmail.com', '1154cfbdcce5f2892f12f7b958bc51346563485a', '$2y$10$LpN7Wn7q7cADYMcqKH/IQOrTUeIBNHLcWUFGOfnXVmbumjp/3TX6W', '1606390625', '1607577540', '::1', 'vietnamese', 'upload/photos/2020/11/uBc7x5HFNaocu2saQXlf_27_44dcd9cf97c74a76086ac657be0b5a5c_image.jpg', 233, 'https://www.youtube.com/channel/UCQbB4UBtTUKU2hJVYEGh-aQ?view_as=subscriber', 'https://www.facebook.com/TheSaltOfTheEarthTheLightOfTheWorld/', 'https://twitter.com/NguynTh74673395', 'https://www.instagram.com/nguyenthanhhungb6/', '', 'https://myaccount.google.com/u/1/personal-info', '1', '0', 'Y', '1086611497.15', 4, '1', '0964024229', '0964024229', 'Quận 1', 'Hồ Chí Minh', '353 Nguyễn Trãi', '353 Bis', '700000', 'default'),
+(4, 'hung1_nguyen1@4', 'Hung1', 'Nguyen1', '', 'nguyenthanhhungb61@gmail.com', 'e05a7b706e23ebf35c6d9a584acb63b6a957ad51', '$2y$10$uep9REjpqJ7tgCswmhUJ7eE2YbQhsmRAGfnh/X8USDF47z3TmkjE.', '1606443807', '1606443807', '::1', 'vietnamese', 'upload/users/user-avatar.png', 0, '', '', '', '', '', '', '0', '0', 'N', '30010000', 0, '1', '', '', '', '', '', '', '', '2'),
+(5, 'ephones_ephone@5', 'Ephones', 'Ephone', '', 'h4@gmail.com', '8f17e170d52fcfefbb699f8f2721a1b451b78cc5', '$2y$10$bXNi/kPm0hjM5iSbn.VG0.zmreEmmkqjQD0nyJHtIRblE7rzrYdyu', '1607577676', '1608049311', '::1', 'vietnamese', 'upload/users/user-avatar.png', 0, '', '', '', '', '', '', '0', '0', 'N', '0.00', 0, '1', '', '', '', '', '', '', '', 'default');
 
 -- --------------------------------------------------------
 
@@ -3119,7 +3162,17 @@ INSERT INTO `hex_wishlist` (`id`, `user_id`, `list_name`, `hash_id`, `type`, `ti
 (12, 3, 'Sundry', '62778e4e6c576a5967b4594a2', 'static', '1606390625'),
 (13, 3, 'Buy later', 'c306ee6b02589deef09778e26', 'static', '1606390625'),
 (14, 3, 'Birthday', 'a6b9d69f57d94a826930e4536', 'static', '1606390625'),
-(15, 3, 'Gift Ideas', '6bdb99c24cd3d1d269dd7aa81', 'static', '1606390625');
+(15, 3, 'Gift Ideas', '6bdb99c24cd3d1d269dd7aa81', 'static', '1606390625'),
+(16, 4, 'Favorite', '6b90b6a112f2f408ec5c95c12', 'static', '1606443807'),
+(17, 4, 'Sundry', '62778e4e6c576a5967b4594a2', 'static', '1606443807'),
+(18, 4, 'Buy later', 'c306ee6b02589deef09778e26', 'static', '1606443807'),
+(19, 4, 'Birthday', 'a6b9d69f57d94a826930e4536', 'static', '1606443807'),
+(20, 4, 'Gift Ideas', '6bdb99c24cd3d1d269dd7aa81', 'static', '1606443807'),
+(21, 5, 'Favorite', '6b90b6a112f2f408ec5c95c12', 'static', '1607577677'),
+(22, 5, 'Sundry', '62778e4e6c576a5967b4594a2', 'static', '1607577677'),
+(23, 5, 'Buy later', 'c306ee6b02589deef09778e26', 'static', '1607577677'),
+(24, 5, 'Birthday', 'a6b9d69f57d94a826930e4536', 'static', '1607577677'),
+(25, 5, 'Gift Ideas', '6bdb99c24cd3d1d269dd7aa81', 'static', '1607577677');
 
 -- --------------------------------------------------------
 
@@ -3134,6 +3187,13 @@ CREATE TABLE `hex_wishlist_items` (
   `user_id` int(11) NOT NULL DEFAULT 0,
   `time` varchar(20) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Đang đổ dữ liệu cho bảng `hex_wishlist_items`
+--
+
+INSERT INTO `hex_wishlist_items` (`id`, `list_id`, `prod_id`, `user_id`, `time`) VALUES
+(3, 1, 20, 1, '1606444509');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -3397,7 +3457,7 @@ ALTER TABLE `hex_acc_del_requests`
 -- AUTO_INCREMENT cho bảng `hex_admins`
 --
 ALTER TABLE `hex_admins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `hex_admin_sessions`
@@ -3409,7 +3469,7 @@ ALTER TABLE `hex_admin_sessions`
 -- AUTO_INCREMENT cho bảng `hex_announcements`
 --
 ALTER TABLE `hex_announcements`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT cho bảng `hex_backups`
@@ -3421,7 +3481,7 @@ ALTER TABLE `hex_backups`
 -- AUTO_INCREMENT cho bảng `hex_basket`
 --
 ALTER TABLE `hex_basket`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `hex_blocked_users`
@@ -3433,19 +3493,19 @@ ALTER TABLE `hex_blocked_users`
 -- AUTO_INCREMENT cho bảng `hex_chat_conversations`
 --
 ALTER TABLE `hex_chat_conversations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `hex_chat_messages`
 --
 ALTER TABLE `hex_chat_messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `hex_checkout_transactions`
 --
 ALTER TABLE `hex_checkout_transactions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `hex_config`
@@ -3463,13 +3523,13 @@ ALTER TABLE `hex_currencies`
 -- AUTO_INCREMENT cho bảng `hex_data_sessions`
 --
 ALTER TABLE `hex_data_sessions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `hex_deliv_addresses`
 --
 ALTER TABLE `hex_deliv_addresses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `hex_langs`
@@ -3487,19 +3547,19 @@ ALTER TABLE `hex_languages`
 -- AUTO_INCREMENT cho bảng `hex_market_revenue`
 --
 ALTER TABLE `hex_market_revenue`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `hex_notifications`
 --
 ALTER TABLE `hex_notifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT cho bảng `hex_orders`
 --
 ALTER TABLE `hex_orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `hex_order_cancellations`
@@ -3511,7 +3571,7 @@ ALTER TABLE `hex_order_cancellations`
 -- AUTO_INCREMENT cho bảng `hex_ord_hist_timeline`
 --
 ALTER TABLE `hex_ord_hist_timeline`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `hex_payout_requests`
@@ -3523,7 +3583,7 @@ ALTER TABLE `hex_payout_requests`
 -- AUTO_INCREMENT cho bảng `hex_products`
 --
 ALTER TABLE `hex_products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT cho bảng `hex_product_media`
@@ -3541,7 +3601,7 @@ ALTER TABLE `hex_prod_categories`
 -- AUTO_INCREMENT cho bảng `hex_prod_ratings`
 --
 ALTER TABLE `hex_prod_ratings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `hex_prod_rating_media`
@@ -3565,7 +3625,7 @@ ALTER TABLE `hex_prod_variations`
 -- AUTO_INCREMENT cho bảng `hex_sessions`
 --
 ALTER TABLE `hex_sessions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT cho bảng `hex_settings`
@@ -3583,7 +3643,7 @@ ALTER TABLE `hex_static_pages`
 -- AUTO_INCREMENT cho bảng `hex_store_customers`
 --
 ALTER TABLE `hex_store_customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `hex_temp_data`
@@ -3601,7 +3661,7 @@ ALTER TABLE `hex_temp_media`
 -- AUTO_INCREMENT cho bảng `hex_users`
 --
 ALTER TABLE `hex_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `hex_verif_requests`
@@ -3613,13 +3673,13 @@ ALTER TABLE `hex_verif_requests`
 -- AUTO_INCREMENT cho bảng `hex_wishlist`
 --
 ALTER TABLE `hex_wishlist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT cho bảng `hex_wishlist_items`
 --
 ALTER TABLE `hex_wishlist_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Các ràng buộc cho các bảng đã đổ

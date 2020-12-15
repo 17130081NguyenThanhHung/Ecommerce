@@ -1,3 +1,4 @@
+/*C:\xampp\htdocs\Web-raovat\views\v1\statics\apps\common\css*/
 html {
   scroll-behavior: smooth; }
 
@@ -548,7 +549,7 @@ header {
               position: relative;
               width: 30px;
               height: 30px;
-              background: #fff;
+              background: #ff;
               color: #72777c;
               margin: 0px;
               display: inline-block;
@@ -1041,20 +1042,20 @@ footer.footer-fluid {
   footer.footer-fluid .top-line {
     width: 100%;
     overflow: hidden;
-    border-bottom: 1px solid #eee; }
+	 }
     footer.footer-fluid .top-line ul {
       width: 100%;
       overflow: hidden;
       display: flex;
-      flex-direction: row;
       flex-wrap: wrap;
       list-style-type: none;
-      padding: 15px 0px;
+      padding: 0; 
+      flex-direction: column;
       margin: 0;
       line-height: 0px !important; }
       footer.footer-fluid .top-line ul li {
         line-height: 0px !important;
-        padding: 0px !important; }
+        padding-top: 5px !important; }
         footer.footer-fluid .top-line ul li a {
           line-height: 22px;
           color: #9697a1;
@@ -1299,13 +1300,12 @@ div.prods-items-container div.prod-item {
         line-height: 0px;
         align-items: center; }
         div.prods-items-container div.prod-item .prod-desc div.body div.prices span.price {
-          font-size: 13px;
+          font-size: 17px;
           font-weight: 500;
-          color: rgb(0, 0, 0);
-          font-weight: bold;
+          color: #333;
           line-height: 21px; }
         div.prods-items-container div.prod-item .prod-desc div.body div.prices span.old-price {
-          font-size: 13px;
+          font-size: 17px;
           font-weight: normal;
           color: #ababab;
           line-height: 21px;
@@ -1738,5 +1738,13 @@ div.modal.show.vh-center {
   flex-direction: column !important;
   justify-content: center !important;
   align-items: center !important; }
+@media (min-width: 956px){
+footer.footer-fluid .top-line ul{
+	padding: 0 200px;
+}
+footer.footer-fluid .top-line ul li .list__link{
+	padding: 0 !important;
+}
+}
 
 /*# sourceMappingURL=common.master.style.css.map */
