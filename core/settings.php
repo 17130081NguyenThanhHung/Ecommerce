@@ -7,9 +7,9 @@ $sql_db_user = "root";
 # MySQL Mật khẩu
 $sql_db_pass = "000000";
 # MySQL Data
-$sql_db_name = "sql-raovat";
+$sql_db_name = "e-phones";
 #  Chỉnh sửa URL website của bạn
-$site_url    = "https://localhost/demotmdt/Web-raovat/"; // E.g (http://example.com)
+$site_url    = "https://localhost/Ephones"; // E.g (http://example.com)
 // <?php
 // # MySQL Host
 // $sql_db_host = "qn0cquuabmqczee2.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";  // mặc định là localhost
